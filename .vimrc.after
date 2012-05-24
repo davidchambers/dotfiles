@@ -13,6 +13,8 @@ set spell
 
 set autoread
 
+set statusline=
+
 match ErrorMsg '\%>78v.\+'
 
 if has("gui_macvim")
