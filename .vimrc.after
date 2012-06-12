@@ -5,6 +5,8 @@ set guioptions-=L " hide left scrollbar
 set guioptions-=r " hide right scrollbar
 set guioptions-=T " hide toolbar
 
+set lines=50
+
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
