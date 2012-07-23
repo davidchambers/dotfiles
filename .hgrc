@@ -1,0 +1,9 @@
+[diff]
+git = True
+
+[extensions]
+color =
+pager =
+
+[ui]
+username = David Chambers <david@upthere.com>
