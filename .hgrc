@@ -6,4 +6,5 @@ color =
 pager =
 
 [ui]
+ignore = ~/.hgignore.global
 username = David Chambers <david@upthere.com>
