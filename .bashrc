@@ -7,7 +7,7 @@ function set_prompt() {
   [[ ($scm == git && $branch != master) ||
      ($scm == hg && $branch != default) ]] && branch="$branch ($scm)"
 
-  if [[ "$TERM" == dumb ]]; then
+  if [[ $TERM == dumb ]]; then
     [[ $branch ]] && branch=" on $branch"
     PS1="\n\w$branch\n> "
   else
