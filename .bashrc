@@ -1,6 +1,12 @@
 function set_prompt() {
   branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
+  scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
   branch=$(echo "$branch" | sed "s/* //")
+
+  # Display "git"/"hg" in parens unless on the main branch.
+  [[ ($scm == git && $branch != master) ||
+     ($scm == hg && $branch != default) ]] && branch="$branch ($scm)"
+
   if [[ "$TERM" == dumb ]]; then
     [[ $branch ]] && branch=" on $branch"
     PS1="\n\w$branch\n> "
