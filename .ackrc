@@ -3,6 +3,7 @@
 --pager=less -r
 
 --type-set=coffeescript=.coffee
+--type-set=haml=.haml
 --type-set=markdown=.text,.md,.mkdn,.markdown
 --type-set=sass=.sass,.scss
 
