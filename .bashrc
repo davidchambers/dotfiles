@@ -18,5 +18,6 @@ function set_prompt() {
 
 export EDITOR='mvim -f -c "au VimLeave * !open -a Terminal"'
 export LESS=-R
+export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PROMPT_COMMAND=set_prompt
