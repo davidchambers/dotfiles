@@ -21,3 +21,13 @@ export LESS=-R
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PROMPT_COMMAND=set_prompt
+
+date() {
+  if [[ $1 == -R || $1 == --rfc-822 ]]; then
+    # Output RFC-822 compliant date string.
+    # e.g. Wed, 16 Dec 2009 15:18:11 +0100
+    /bin/date | sed "s/[^ ][^ ]*$/`/bin/date +%z`/"
+  else
+    /bin/date "$@"
+  fi
+}
