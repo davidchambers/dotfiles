@@ -4,3 +4,6 @@
 [user]
 	name = David Chambers
 	email = david@upthere.com
+
+[core]
+	excludesfile = ~/.gitignore_global
