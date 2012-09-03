@@ -11,10 +11,10 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-set spell
-
 set autoread
-
+set nonumber
+set nospell
+set nowrap
 set statusline=
 
 match ErrorMsg '\%>78v.\+'
