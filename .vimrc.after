@@ -24,3 +24,13 @@ if has("gui_macvim")
 endif
 
 autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
+
+" Show syntax highlighting groups for word under cursor
+" http://vimcasts.org/episodes/creating-colorschemes-for-vim/
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
