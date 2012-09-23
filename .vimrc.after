@@ -23,6 +23,12 @@ if has("gui_macvim")
   set shell=/bin/bash\ -i
 endif
 
+" Treat soft-wrapped lines as multiple lines.
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
 autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
 
 " Show syntax highlighting groups for word under cursor
