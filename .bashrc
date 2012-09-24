@@ -7,12 +7,15 @@ function set_prompt() {
   [[ ($scm == git && $branch != master) ||
      ($scm == hg && $branch != default) ]] && branch="$branch ($scm)"
 
+  path="\w"
+  [[ $VIRTUAL_ENV ]] && path="(`basename $VIRTUAL_ENV`) $path"
+
   if [[ $TERM == dumb ]]; then
     [[ $branch ]] && branch=" on $branch"
     PS1="\n\w$branch\n> "
   else
     [[ $branch ]] && branch=" on \[\e[0;33m\]$branch"
-    PS1="\n\[\e[0;36m\]\w\[\e[0;37m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[0;36m\]$path\[\e[0;37m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
@@ -20,7 +23,14 @@ export EDITOR='mvim -f -c "au VimLeave * !open -a Terminal"'
 export LESS=-R
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
 export PROMPT_COMMAND=set_prompt
+export VIRTUALENV_DISTRIBUTE=true
+export WORKON_HOME=$HOME/.virtualenvs
+
+source /usr/local/bin/virtualenvwrapper.sh
+
+eval "$(rbenv init -)"
 
 date() {
   if [[ $1 == -R || $1 == --rfc-822 ]]; then
