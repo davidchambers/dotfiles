@@ -1,5 +1,5 @@
-colorscheme zenburn
-set guifont=Inconsolata:h18
+colorscheme aotearoa
+set guifont=Inconsolata\ for\ Powerline:h18
 
 set guioptions-=L " hide left scrollbar
 set guioptions-=r " hide right scrollbar
@@ -13,6 +13,7 @@ set shiftwidth=2
 
 set autoread
 set nonumber
+set noshowmode
 set nospell
 set nowrap
 set statusline=
@@ -40,3 +41,5 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+let g:Powerline_symbols = 'fancy'
