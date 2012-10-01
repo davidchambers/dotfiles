@@ -3,19 +3,18 @@ function set_prompt() {
   scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
   branch=$(echo "$branch" | sed "s/* //")
 
-  # Display "git"/"hg" in parens unless on the main branch.
-  [[ ($scm == git && $branch != master) ||
-     ($scm == hg && $branch != default) ]] && branch="$branch ($scm)"
+  # Display "hg" in parens when in a Mercurial repo.
+  [[ $scm == hg ]] && branch="$branch (hg)"
 
   path="\w"
   [[ $VIRTUAL_ENV ]] && path="(`basename $VIRTUAL_ENV`) $path"
 
   if [[ $TERM == dumb ]]; then
-    [[ $branch ]] && branch=" on $branch"
+    [[ $branch ]] && branch=" :$branch"
     PS1="\n\w$branch\n> "
   else
-    [[ $branch ]] && branch=" on \[\e[0;33m\]$branch"
-    PS1="\n\[\e[0;36m\]$path\[\e[0;37m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    [[ $branch ]] && branch="\[\e[0;33m\] :$branch"
+    PS1="\n\[\e[0;36m\]$path$branch\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
