@@ -32,15 +32,15 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 eval "$(rbenv init -)"
 
-date=$(which date)
 date() {
-  if [[ $1 == -R || $1 == --rfc-822 ]]; then
-    # Output RFC-822 compliant date string.
-    # e.g. Wed, 16 Dec 2009 15:18:11 +0100
-    $date | sed "s/[^ ][^ ]*$/$($date +%z)/"
-  else
-    $date "$@"
-  fi
+  case $1 in
+    -R|--rfc-822)
+      # Output RFC-822 compliant date string.
+      # e.g. Wed, 16 Dec 2009 15:18:11 +0100
+      command date | sed "s/[^ ][^ ]*$/$(command date +%z)/" ;;
+    *)
+      command date "$@" ;;
+  esac
 }
 
 hgcsetdate() {
