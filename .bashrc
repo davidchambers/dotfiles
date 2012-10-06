@@ -9,12 +9,13 @@ function set_prompt() {
   path="\w"
   [[ $VIRTUAL_ENV ]] && path="(`basename $VIRTUAL_ENV`) $path"
 
+  when=$(date +%H:%M)
   if [[ $TERM == dumb ]]; then
     [[ $branch ]] && branch=" :$branch"
-    PS1="\n\w$branch\n> "
+    PS1="\n$when \w$branch\n> "
   else
     [[ $branch ]] && branch="\[\e[0;33m\] :$branch"
-    PS1="\n\[\e[0;36m\]$path$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[1;37m\]$when \[\e[0;36m\]$path$branch\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
