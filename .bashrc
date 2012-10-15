@@ -37,7 +37,7 @@ date() {
     -R|--rfc-822)
       # Output RFC-822 compliant date string.
       # e.g. Wed, 16 Dec 2009 15:18:11 +0100
-      command date | sed "s/[^ ][^ ]*$/$(command date +%z)/" ;;
+      command date '+%a, %e %b %Y %T %z' ;;
     *)
       command date "$@" ;;
   esac
