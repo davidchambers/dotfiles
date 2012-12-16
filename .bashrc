@@ -32,6 +32,13 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 eval "$(rbenv init -)"
 
+shopt -s histappend
+# ignorespace:  lines which begin with a space character are not saved
+#               in the history list
+# erasedups:    all previous lines matching the current line are removed
+#               from the history list before that line is saved
+HISTCONTROL=ignorespace:erasedups
+
 date() {
   case $1 in
     -R|--rfc-822)
