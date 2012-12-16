@@ -28,9 +28,11 @@ export PROMPT_COMMAND=set_prompt
 export VIRTUALENV_DISTRIBUTE=true
 export WORKON_HOME=$HOME/.virtualenvs
 
-source /usr/local/bin/virtualenvwrapper.sh
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]] ; then
+  source /usr/local/bin/virtualenvwrapper.sh
+fi
 
-eval "$(rbenv init -)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 shopt -s histappend
 # ignorespace:  lines which begin with a space character are not saved
