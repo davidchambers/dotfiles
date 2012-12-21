@@ -28,11 +28,18 @@ if has("gui_macvim")
   set shell=/bin/bash\ -i
 endif
 
+let mapleader = ","
+let maplocalleader = "\\"
+
 " Treat soft-wrapped lines as multiple lines.
 noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+
+" System clipboard interaction.
+nnoremap <Leader>p <Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
+nnoremap <Leader>P <Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
 
 autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
 
