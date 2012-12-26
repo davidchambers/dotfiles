@@ -1,4 +1,5 @@
 set_prompt() {
+  local branch path scm when
   branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
   scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
   branch=$(echo "$branch" | sed "s/* //")
