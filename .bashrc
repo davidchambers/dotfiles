@@ -1,4 +1,4 @@
-function set_prompt() {
+set_prompt() {
   branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
   scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
   branch=$(echo "$branch" | sed "s/* //")
@@ -28,9 +28,12 @@ export PROMPT_COMMAND=set_prompt
 export VIRTUALENV_DISTRIBUTE=true
 export WORKON_HOME=$HOME/.virtualenvs
 
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]] ; then
-  source /usr/local/bin/virtualenvwrapper.sh
-fi
+include() {
+  [[ -f "$1" ]] && . "$1" && echo sourced $1
+}
+
+include /usr/local/bin/virtualenvwrapper.sh
+include /opt/local/etc/profile.d/bash_completion.sh
 
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
