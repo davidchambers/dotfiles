@@ -47,12 +47,12 @@ autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:»,precedes:«
 set list
 highlight clear NonText
-highlight NonText ctermfg=DarkGrey guifg=#404040
+highlight NonText ctermfg=DarkGrey guifg=#333333
 highlight clear SpecialKey
-highlight SpecialKey ctermfg=DarkGrey guifg=#505050
+highlight SpecialKey ctermfg=DarkGrey guifg=#333333
 if &t_Co == 256
-    highlight NonText ctermfg=232 guifg=#404040
-    highlight SpecialKey ctermfg=232 guifg=#505050 guibg=NONE
+    highlight NonText ctermfg=232 guifg=#333333
+    highlight SpecialKey ctermfg=232 guifg=#333333 guibg=NONE
     highlight ColorColumn ctermbg=232
 endif
 
