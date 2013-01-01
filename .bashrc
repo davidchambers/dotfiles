@@ -8,6 +8,7 @@ set_prompt() {
   # Display "hg" in parens when in a Mercurial repo.
   [[ $scm == hg ]] && branch="$branch (hg)"
 
+  env=
   [[ $VIRTUAL_ENV ]] && env="\[\e[0;7m\][$(basename $VIRTUAL_ENV)]$reset "
 
   when=$(date +%H:%M)
