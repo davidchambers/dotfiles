@@ -1,5 +1,6 @@
 set_prompt() {
-  local branch path scm when
+  local branch path reset scm when
+  reset='\[\e[0m\]'
   branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
   scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
   branch=$(echo "$branch" | sed "s/* //")
@@ -7,8 +8,7 @@ set_prompt() {
   # Display "hg" in parens when in a Mercurial repo.
   [[ $scm == hg ]] && branch="$branch (hg)"
 
-  path="\w"
-  [[ $VIRTUAL_ENV ]] && path="(`basename $VIRTUAL_ENV`) $path"
+  [[ $VIRTUAL_ENV ]] && env="\[\e[0;7m\][$(basename $VIRTUAL_ENV)]$reset "
 
   when=$(date +%H:%M)
   if [[ $TERM == dumb ]]; then
@@ -16,7 +16,7 @@ set_prompt() {
     PS1="\n$when \w$branch\n> "
   else
     [[ $branch ]] && branch="\[\e[0;33m\] :$branch"
-    PS1="\n\[\e[1;37m\]$when \[\e[0;36m\]$path$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[1;37m\]$when $env\[\e[0;36m\]\w$branch\n\[\e[0;37m\]> $reset"
   fi
 }
 
