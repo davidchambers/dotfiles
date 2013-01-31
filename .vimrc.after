@@ -38,8 +38,8 @@ noremap gj j
 noremap gk k
 
 " System clipboard interaction.
-nnoremap <Leader>p <Esc>:set paste<CR>"*p<CR>:set nopaste<CR>
-nnoremap <Leader>P <Esc>:set paste<CR>"*P<CR>:set nopaste<CR>
+noremap <leader>p :silent! set paste<CR>"*p:set nopaste<CR>
+noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
 
 autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
 
