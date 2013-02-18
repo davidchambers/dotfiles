@@ -3,6 +3,7 @@ git = True
 
 [extensions]
 color =
+hggit =
 pager =
 
 [ui]
