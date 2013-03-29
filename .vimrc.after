@@ -43,6 +43,9 @@ noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
 
 autocmd BufRead,BufNewFile *.text set filetype=markdown nonumber
 
+" Slowest but most accurate syntax highlighting.
+autocmd BufEnter * :syntax sync fromstart
+
 " TextMate-style display of invisible characters.
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:»,precedes:«
 set list
