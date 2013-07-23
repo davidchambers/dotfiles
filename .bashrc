@@ -30,6 +30,8 @@ export PROMPT_COMMAND=set_prompt
 export VIRTUALENV_DISTRIBUTE=true
 export WORKON_HOME=$HOME/.virtualenvs
 
+alias qc='~/scripts/qc'
+
 include() {
   [[ -f "$1" ]] && . "$1" && echo sourced $1
 }
