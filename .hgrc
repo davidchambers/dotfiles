@@ -8,4 +8,4 @@ pager =
 
 [ui]
 ignore = ~/.hgignore.global
-username = David Chambers <david@upthere.com>
+username = David Chambers <dc@davidchambers.me>
