@@ -37,7 +37,6 @@ include() {
 }
 
 include /usr/local/bin/virtualenvwrapper.sh
-include /opt/local/etc/profile.d/bash_completion.sh
 
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
