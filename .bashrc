@@ -21,7 +21,7 @@ set_prompt() {
   fi
 }
 
-export EDITOR='mvim -f -c "au VimLeave * !open -a Terminal"'
+export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm2"'
 export LESS=-R
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
