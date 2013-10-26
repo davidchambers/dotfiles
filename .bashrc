@@ -17,9 +17,12 @@ set_prompt() {
     PS1="\n$when \w$branch\n> "
   else
     [[ $branch ]] && branch="\[\e[0;33m\] :$branch"
-    PS1="\n\[\e[1;37m\]$when $env\[\e[0;36m\]\w$branch\n\[\e[0;37m\]> $reset"
+    PS1="\n$when $env\[\e[0;36m\]\w$branch\n\[\e[0;36m\]> \[\e[0;37m\]"
   fi
 }
+
+# Reset text formatting before executing each command.
+trap 'printf "\e[0m"' DEBUG
 
 export EDITOR='mvim -f -c "au VimLeave * !open -a iTerm2"'
 export LESS=-R
