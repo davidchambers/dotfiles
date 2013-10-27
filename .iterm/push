@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+binary="$HOME/Library/Preferences/com.googlecode.iterm2.plist"
+xml="$HOME/.iterm/com.googlecode.iterm2.plist"
+
+plutil -convert binary1 -o "$binary" "$xml"
