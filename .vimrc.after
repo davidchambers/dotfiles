@@ -31,6 +31,10 @@ endif
 let mapleader = ","
 let maplocalleader = "\\"
 
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 " Treat soft-wrapped lines as multiple lines.
 noremap j gj
 noremap k gk
