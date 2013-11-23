@@ -1,4 +1,17 @@
 set_prompt() {
+  # Always print prompt at beginning of row, like zsh:
+  # http://stackoverflow.com/q/19943482/312785
+  #
+  # CSI 6n reports the cursor position as ESC[n;mR, where n is the row
+  # and m is the column. Issue this control sequence and silently read
+  # the resulting report until reaching the "R". By setting IFS to ";"
+  # in conjunction with read's -a flag, fields are placed in an array.
+  local curpos
+  echo -en '\033[6n'
+  IFS=';' read -s -d R -a curpos
+  curpos[0]="${curpos[0]:2}"  # strip leading ESC[
+  (( curpos[1] > 1 )) && echo -e '\033[7m%\033[0m'
+
   local branch path reset scm when
   reset='\[\e[0m\]'
   branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
