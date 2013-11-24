@@ -8,9 +8,8 @@ set_prompt() {
   # in conjunction with read's -a flag, fields are placed in an array.
   local curpos
   echo -en '\033[6n'
-  IFS=';' read -s -d R -a curpos
-  curpos[0]="${curpos[0]:2}"  # strip leading ESC[
-  (( curpos[1] > 1 )) && echo -e '\033[7m%\033[0m'
+  IFS='[;' read -s -d R -a curpos
+  (( curpos[2] > 1 )) && echo -e '\033[7m%\033[0m'
 
   local branch path reset scm when
   reset='\[\e[0m\]'
