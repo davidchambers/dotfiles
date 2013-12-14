@@ -30,6 +30,7 @@ export PROMPT_COMMAND=set_prompt
 export VIRTUALENV_DISTRIBUTE=true
 export WORKON_HOME=$HOME/.virtualenvs
 
+alias gigantic='ssh dc@74.207.245.241 -p 512'
 alias qc='~/scripts/qc'
 
 include() {
