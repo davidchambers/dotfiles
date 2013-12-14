@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "usage: $(basename $0)"
+  echo
+  echo "Open the current Git repository in a browser."
+}
+
+case "$1" in
+  -h|--help) usage;;
+  -*) echo "invalid argument $1" 1>&2;;
+  *) open "https://$(git remote --verbose \
+     | sed -n 's!^origin[[:space:]][^@]*@\([^:]*\):\(.*\)[.]git .*$!\1/\2!p' \
+     | head -n 1)";;
+esac
