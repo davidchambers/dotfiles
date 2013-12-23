@@ -9,5 +9,5 @@ mq =
 pager =
 
 [ui]
-ignore = ~/.hgignore.global
+ignore = ~/hgignore
 username = David Chambers <dc@davidchambers.me>
