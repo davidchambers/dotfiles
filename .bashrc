@@ -1,23 +1,11 @@
 set_prompt() {
-  local branch path reset scm when
-  reset='\[\e[0m\]'
-  branch=$(git branch 2> /dev/null | grep "*" || hg branch 2> /dev/null)
-  scm=$(grep -q "*" <<< $branch && echo "git" || ([[ $branch ]] && echo "hg"))
-  branch=$(echo "$branch" | sed "s/* //")
-
-  # Display "hg" in parens when in a Mercurial repo.
-  [[ $scm == hg ]] && branch="$branch (hg)"
-
-  env=
-  [[ $VIRTUAL_ENV ]] && env="\[\e[0;7m\][$(basename $VIRTUAL_ENV)]$reset "
-
+  local branch when
+  branch=$(GIT_PS1_SHOWDIRTYSTATE=true __git_ps1)
   when=$(date +%H:%M)
   if [[ $TERM == dumb ]]; then
-    [[ $branch ]] && branch=" :$branch"
     PS1="\n$when \w$branch\n> "
   else
-    [[ $branch ]] && branch="\[\e[0;33m\] :$branch"
-    PS1="\n\[\e[1;37m\]$when $env\[\e[0;36m\]\w$branch\n\[\e[0;37m\]> $reset"
+    PS1="\n\[\e[1;37m\]$when \[\e[0;36m\]\w\[\e[0;33m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
@@ -38,6 +26,7 @@ include() {
 }
 
 include "$HOME/git/git-completion.bash"
+include "$HOME/git/git-prompt.sh"
 include "/usr/local/bin/virtualenvwrapper.sh"
 
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
