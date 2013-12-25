@@ -37,7 +37,8 @@ include() {
   [[ -f "$1" ]] && . "$1" && echo sourced $1
 }
 
-include /usr/local/bin/virtualenvwrapper.sh
+include "$HOME/git/git-completion.bash"
+include "/usr/local/bin/virtualenvwrapper.sh"
 
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
