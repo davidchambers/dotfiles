@@ -19,6 +19,7 @@ export VIRTUALENV_DISTRIBUTE=true
 export WORKON_HOME=$HOME/.virtualenvs
 
 alias gh='~/scripts/gh'
+alias node='env NODE_NO_READLINE=1 rlwrap node'
 alias qc='~/scripts/qc'
 
 include() {
