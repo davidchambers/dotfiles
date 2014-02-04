@@ -1,0 +1,3 @@
+[submodule ".janus/aotearoa"]
+	path = .janus/aotearoa
+	url = git@github.com:davidchambers/aotearoa.git
