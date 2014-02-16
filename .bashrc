@@ -11,7 +11,7 @@ set_prompt() {
 
 export EDITOR=vim
 export LESS=-R
-export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+export NODE_PATH=/opt/local/lib/node_modules:$NODE_PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
 export PROMPT_COMMAND=set_prompt
