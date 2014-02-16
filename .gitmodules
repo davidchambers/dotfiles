@@ -1,3 +1,6 @@
 [submodule ".janus/aotearoa"]
 	path = .janus/aotearoa
 	url = git@github.com:davidchambers/aotearoa.git
+[submodule ".janus/vim-airline"]
+	path = .janus/vim-airline
+	url = git@github.com:bling/vim-airline.git
