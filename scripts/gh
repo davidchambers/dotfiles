@@ -9,7 +9,5 @@ usage() {
 case "$1" in
   -h|--help) usage;;
   -*) echo "invalid argument $1" 1>&2;;
-  *) open "https://$(git remote --verbose \
-     | sed -n 's!^origin[[:space:]][^@]*@\([^:]*\):\(.*\)[.]git .*$!\1/\2!p' \
-     | head -n 1)";;
+  *) open "https://github.com/$(git ls-remote --get-url | sed 's/^.*:\(.*\)[.]git$/\1/')/commits/$(git rev-parse --abbrev-ref HEAD)";;
 esac
