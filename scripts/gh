@@ -12,7 +12,7 @@ usage() {
 "
 }
 
-project_slug=$(git ls-remote --get-url | sed 's/^.*:\(.*\)[.]git$/\1/')
+project_slug=$(git ls-remote --get-url | sed -E 's!^([^@]*@[^:]*:|https://[^/]*/)([^/]*/[^/]*)[.]git$!\2!')
 default_branch=master
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 case "$1" in
