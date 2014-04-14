@@ -9,29 +9,32 @@ set_prompt() {
   fi
 }
 
+include() {
+  [[ -f "$1" ]] && . "$1" && echo sourced $1
+}
+
 main() {
+  local pybin=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+
   export EDITOR=vim
   export LESS=-R
   export NODE_PATH="/opt/local/lib/node_modules:$NODE_PATH"
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+  export PATH="$pybin:$PATH"
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
   export PROMPT_COMMAND=set_prompt
   export VIRTUALENV_DISTRIBUTE=true
   export WORKON_HOME="$HOME/.virtualenvs"
+
+  include "$HOME/git/git-completion.bash"
+  include "$HOME/git/git-prompt.sh"
+  include "$pybin/virtualenvwrapper.sh"
 }
 main
 
 alias gh='~/scripts/gh'
 alias noderepl='env NODE_NO_READLINE=1 rlwrap --prompt-colour=yellow --substitute-prompt="node >>> " node'
 alias qc='~/scripts/qc'
-
-include() {
-  [[ -f "$1" ]] && . "$1" && echo sourced $1
-}
-
-include "$HOME/git/git-completion.bash"
-include "$HOME/git/git-prompt.sh"
-include "/usr/local/bin/virtualenvwrapper.sh"
 
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
