@@ -5,7 +5,7 @@ set_prompt() {
   if [[ $TERM == dumb ]]; then
     PS1="\n$when \w$branch\n> "
   else
-    PS1="\n\[\e[1;37m\]$when \[\e[0;36m\]\w\[\e[0;33m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[0;36m\]$when \[\e[0;33m\]\w\[\e[0;35m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
