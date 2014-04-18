@@ -14,9 +14,9 @@
 # break this.
 
 HASH="%C(yellow)%h%Creset"
-RELATIVE_TIME="%Cgreen(%ar)%Creset"
-AUTHOR="%C(bold blue)<%an>%Creset"
-REFS="%C(bold red)%d%Creset"
+RELATIVE_TIME="%C(green)%ar%Creset"
+AUTHOR="%C(blue)%an%Creset"
+REFS="%C(red)%d%Creset"
 SUBJECT="%s"
 
 FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
@@ -47,10 +47,8 @@ show_git_head() {
 
 pretty_git_log() {
     git log --graph --pretty="tformat:${FORMAT}" $* |
-        # Replace (2 years ago) with (2 years)
-        sed -Ee 's/(^[^<]*) ago\)/\1)/' |
-        # Replace (2 years, 5 months) with (2 years)
-        sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
+        # Shorten relative date
+        sed -Ee 's/(, [[:digit:]]+ months?)? ago//' |
         # Line columns up based on } delimiter
         column -s '}' -t |
         # Color merge commits specially
