@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 usage() {
   echo "
@@ -12,16 +13,24 @@ usage() {
 "
 }
 
-project_slug=$(git ls-remote --get-url | sed -E 's!^([^@]*@[^:]*:|https://[^/]*/)([^/]*/[^/]*)[.]git$!\2!')
+get_slug() {
+  git config --get "remote.$1.url" \
+  | sed -E 's!^([^@]*@[^:]*:|https://[^/]*/)([^/]*/[^/]*)[.]git$!\2!'
+}
+
+origin_slug="$(get_slug origin)"
+upstream_slug="$(get_slug upstream)"
 default_branch=master
-current_branch=$(git rev-parse --abbrev-ref HEAD)
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
 case "$1" in
   -h|--help) usage ; exit ;;
   --default-branch) default_branch="$2" ;;
   -*) echo "invalid argument $1" >&2 ; exit 1 ;;
 esac
-if [ "$current_branch" = "$default_branch" ] ; then
-  open "https://github.com/$project_slug/commits/$default_branch"
+if [ -n "$upstream_slug" ] ; then
+  open "https://github.com/$origin_slug/compare/${upstream_slug/\/*/}:$default_branch...$current_branch"
+elif [ "$current_branch" = "$default_branch" ] ; then
+  open "https://github.com/$origin_slug/commits/$default_branch"
 else
-  open "https://github.com/$project_slug/compare/$default_branch...$current_branch"
+  open "https://github.com/$origin_slug/compare/$default_branch...$current_branch"
 fi
