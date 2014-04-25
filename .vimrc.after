@@ -54,15 +54,6 @@ autocmd BufEnter * :syntax sync fromstart
 " TextMate-style display of invisible characters.
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:»,precedes:«
 set list
-highlight clear NonText
-highlight NonText ctermfg=DarkGrey guifg=#333333
-highlight clear SpecialKey
-highlight SpecialKey ctermfg=DarkGrey guifg=#333333
-if &t_Co == 256
-    highlight NonText ctermfg=232 guifg=#333333
-    highlight SpecialKey ctermfg=232 guifg=#333333 guibg=NONE
-    highlight ColorColumn ctermbg=232
-endif
 
 " Show syntax highlighting groups for word under cursor
 " http://vimcasts.org/episodes/creating-colorschemes-for-vim/
