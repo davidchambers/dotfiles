@@ -22,6 +22,7 @@ main() {
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
   export PATH="$pybin:$PATH"
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+  export PATH="$HOME/bin:$PATH"
   export PROMPT_COMMAND=set_prompt
   export VIRTUALENV_DISTRIBUTE=true
   export WORKON_HOME="$HOME/.virtualenvs"
