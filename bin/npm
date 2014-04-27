@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+# The real npm should be second in the list.
+npm="$(which -a npm | head -n 2 | tail -n 1)"
+
+__strip_background_colors() {
+  local output="$(sed $'s:\x1B\[4[0-9]m::g')"
+  [[ -n $output ]] && printf %s%s "$output" "$1"
+}
+
+# Strip the visually offensive background colours from npm's output,
+# leaving the foreground colours intact.
+NPM_CONFIG_COLOR=always "$npm" "$@" \
+  1> >(__strip_background_colors $'\n' >&1) \
+  2> >(__strip_background_colors '' >&2)
