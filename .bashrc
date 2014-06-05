@@ -1,11 +1,16 @@
 set_prompt() {
-  local branch when
+  local branch env when
   branch=$(GIT_PS1_SHOWDIRTYSTATE=true __git_ps1)
+  if [[ -n "$VIRTUAL_ENV" ]] ; then
+    env=" \[\e[0;32m\]:$(basename $VIRTUAL_ENV)"
+  else
+    env=""
+  fi
   when=$(date +%H:%M)
   if [[ $TERM == dumb ]]; then
-    PS1="\n$when \w$branch\n> "
+    PS1="\n$when \w$branch$env\n> "
   else
-    PS1="\n\[\e[0;36m\]$when \[\e[0;33m\]\w\[\e[0;35m\]$branch\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[0;36m\]$when \[\e[0;33m\]\w\[\e[0;35m\]$branch$env\n\[\e[0;37m\]> \[\e[0m\]"
   fi
 }
 
