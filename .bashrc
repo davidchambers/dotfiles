@@ -19,12 +19,14 @@ include() {
 }
 
 main() {
-  local pybin=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
+  local pyver=2.7
+  local pybin="/opt/local/Library/Frameworks/Python.framework/Versions/$pyver/bin"
 
   export EDITOR=vim
   export LESS=-R
   export NODE_PATH="/opt/local/lib/node_modules:$NODE_PATH"
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+  export PATH="$HOME/Library/Python/$pyver/bin:$PATH"
   export PATH="$pybin:$PATH"
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
   export PATH="$HOME/bin:$PATH"
