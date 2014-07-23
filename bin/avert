@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+
+osascript -e 'display notification "Avert your eyes for 20 seconds" with title "Break time!"'
