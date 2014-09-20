@@ -45,6 +45,8 @@ noremap gk k
 noremap <leader>p :silent! set paste<CR>"*p:set nopaste<CR>
 noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
 
+autocmd BufRead,BufNewFile .jscsrc set filetype=json
+autocmd BufRead,BufNewFile .jshintrc set filetype=json
 autocmd BufRead,BufNewFile *.json set filetype=json
 autocmd BufRead,BufNewFile *.text set filetype=markdown
 
