@@ -8,9 +8,9 @@ set_prompt() {
   fi
   when=$(date +%H:%M)
   if [[ $TERM == dumb ]]; then
-    PS1="\n$when \w$branch$env\n> "
+    PS1="\n$when \w$branch$env\n$ "
   else
-    PS1="\n\[\e[0;36m\]$when \[\e[0;33m\]\w\[\e[0;35m\]$branch$env\n\[\e[0;37m\]> \[\e[0m\]"
+    PS1="\n\[\e[0;36m\]$when \[\e[0;33m\]\w\[\e[0;35m\]$branch$env\n\[\e[0;37m\]$ \[\e[0m\]"
   fi
 }
 
