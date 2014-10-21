@@ -18,9 +18,21 @@ get_slug() {
   | sed -E 's!^([^@]*@[^:]*:|https://[^/]*/)([^/]*/[^/]*)[.]git$!\2!'
 }
 
+# If refs/heads/master exists, returns "master";
+# else if refs/heads/gh-pages exists, returns "gh-pages";
+# else returns "master".
+get_default_branch() {
+  local ref
+  for ref in $(git for-each-ref --format='%(refname)' refs/heads | sort -r) ; do
+    [ "$ref" = 'refs/heads/master' ] && printf master && exit
+    [ "$ref" = 'refs/heads/gh-pages' ] && printf gh-pages && exit
+  done
+  printf master
+}
+
 origin_slug="$(get_slug origin)"
 upstream_slug="$(get_slug upstream)"
-default_branch=master
+default_branch="$(get_default_branch)"
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 case "$1" in
   -h|--help) usage ; exit ;;
