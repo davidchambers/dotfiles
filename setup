@@ -13,7 +13,7 @@ done <<END
 .inputrc
 .iterm
 .ssh/config
-.vimrc.after
+.vimrc
 bin
 git
 hg

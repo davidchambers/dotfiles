@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 colorscheme aotearoa
 set guifont=Inconsolata\ for\ Powerline:h18
 
@@ -12,6 +14,7 @@ set softtabstop=2
 set shiftwidth=2
 
 set autoread
+set dir=/tmp
 set nonumber
 set noshowmode
 set nospell

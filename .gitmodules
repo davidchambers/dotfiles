@@ -1,9 +1,0 @@
-[submodule ".janus/aotearoa"]
-	path = .janus/aotearoa
-	url = git@github.com:davidchambers/aotearoa.git
-[submodule ".janus/vim-airline"]
-	path = .janus/vim-airline
-	url = git@github.com:bling/vim-airline.git
-[submodule ".janus/vim-json"]
-	path = .janus/vim-json
-	url = git@github.com:elzr/vim-json.git
