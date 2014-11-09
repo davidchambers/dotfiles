@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+while read filename ; do
+  ln -s "$HOME/.dotfiles/$filename" "$HOME/$filename" || true
+done <<END
+.LaunchAgents
+.ackrc
+.bash_profile
+.bashrc
+.gitconfig
+.hgrc
+.inputrc
+.iterm
+.ssh/config
+.vimrc.after
+bin
+git
+hg
+END

@@ -34,8 +34,9 @@ main() {
   export VIRTUALENV_DISTRIBUTE=true
   export WORKON_HOME="$HOME/.virtualenvs"
 
-  include "$HOME/git/git-completion.bash"
-  include "$HOME/git/git-prompt.sh"
+  include "/opt/local/etc/bash_completion"
+  include "/opt/local/share/git/contrib/completion/git-completion.bash"
+  include "/opt/local/share/git/contrib/completion/git-prompt.sh"
   include "$pybin/virtualenvwrapper.sh"
 }
 main
