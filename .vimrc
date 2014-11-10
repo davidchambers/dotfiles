@@ -18,11 +18,11 @@ set dir=/tmp
 set expandtab
 set hlsearch
 set incsearch
+set laststatus=2
 set nonumber
 set noshowmode
 set nospell
 set nowrap
-set statusline=
 
 " Mode-dependent cursor for iTerm.
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
