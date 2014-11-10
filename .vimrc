@@ -15,6 +15,7 @@ set shiftwidth=2
 
 set autoread
 set dir=/tmp
+set expandtab
 set hlsearch
 set incsearch
 set nonumber
@@ -48,13 +49,17 @@ noremap gk k
 noremap <leader>p :silent! set paste<CR>"*p:set nopaste<CR>
 noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
 
-autocmd BufRead,BufNewFile .jscsrc set filetype=json
-autocmd BufRead,BufNewFile .jshintrc set filetype=json
-autocmd BufRead,BufNewFile *.json set filetype=json
-autocmd BufRead,BufNewFile *.text set filetype=markdown
+if has("autocmd")
+  autocmd FileType make setlocal noexpandtab ts=4 sts=4 sw=4
 
-" Slowest but most accurate syntax highlighting.
-autocmd BufEnter * :syntax sync fromstart
+  autocmd BufRead,BufNewFile .jscsrc setlocal filetype=json
+  autocmd BufRead,BufNewFile .jshintrc setlocal filetype=json
+  autocmd BufRead,BufNewFile *.json setlocal filetype=json
+  autocmd BufRead,BufNewFile *.text setlocal filetype=markdown
+
+  " Slowest but most accurate syntax highlighting.
+  autocmd BufEnter * :syntax sync fromstart
+endif
 
 " TextMate-style display of invisible characters.
 set listchars=tab:⇥\ ,eol:¬,trail:·,extends:»,precedes:«
