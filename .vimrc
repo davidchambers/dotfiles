@@ -54,6 +54,7 @@ if has("autocmd")
 
   autocmd BufRead,BufNewFile .jscsrc setlocal filetype=json
   autocmd BufRead,BufNewFile .jshintrc setlocal filetype=json
+  autocmd BufRead,BufNewFile .pypirc setlocal filetype=cfg
   autocmd BufRead,BufNewFile *.json setlocal filetype=json
   autocmd BufRead,BufNewFile *.text setlocal filetype=markdown
 
