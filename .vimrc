@@ -15,6 +15,8 @@ set shiftwidth=2
 
 set autoread
 set dir=/tmp
+set hlsearch
+set incsearch
 set nonumber
 set noshowmode
 set nospell
