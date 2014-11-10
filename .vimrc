@@ -14,6 +14,7 @@ set softtabstop=2
 set shiftwidth=2
 
 set autoread
+set conceallevel=2
 set dir=/tmp
 set expandtab
 set hlsearch
