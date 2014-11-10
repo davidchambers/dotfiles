@@ -79,3 +79,6 @@ endfunc
 
 let g:airline_left_sep="\uE0B0"
 let g:airline_right_sep="\uE0B2"
+
+let g:neocomplcache_enable_at_startup=1
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
