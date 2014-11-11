@@ -54,6 +54,8 @@ noremap <leader>p :silent! set paste<CR>"*p:set nopaste<CR>
 noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
 
 if has("autocmd")
+  filetype plugin indent on
+
   autocmd FileType make setlocal noexpandtab ts=4 sts=4 sw=4
 
   autocmd BufRead,BufNewFile .jscsrc setlocal filetype=json
