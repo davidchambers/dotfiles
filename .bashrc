@@ -26,6 +26,7 @@ main() {
   export LESS=-R
   export NODE_PATH="/opt/local/lib/node_modules:$NODE_PATH"
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+  export PATH="$HOME/Library/Haskell/bin:$PATH"
   export PATH="$HOME/Library/Python/$pyver/bin:$PATH"
   export PATH="$pybin:$PATH"
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
