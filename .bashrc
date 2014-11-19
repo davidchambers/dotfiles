@@ -22,7 +22,7 @@ main() {
   local pyver=2.7
   local pybin="/opt/local/Library/Frameworks/Python.framework/Versions/$pyver/bin"
 
-  export EDITOR=vim
+  export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
   export LESS=-R
   export NODE_PATH="/opt/local/lib/node_modules:$NODE_PATH"
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
