@@ -1,5 +1,6 @@
 execute pathogen#infect()
 
+syntax on
 colorscheme aotearoa
 set guifont=Inconsolata\ for\ Powerline:h18
 
