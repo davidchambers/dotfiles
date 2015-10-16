@@ -8,4 +8,5 @@
 --type-set=markdown=.text,.md,.mkdn,.markdown
 --type-set=sass=.sass,.scss
 
+--ignore-dir=coverage
 --ignore-dir=node_modules
