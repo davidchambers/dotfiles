@@ -13,9 +13,9 @@ usage() {
 "
 }
 
-get_slug() {
+get_identifier() {
   git config --get "remote.$1.url" \
-  | sed -E 's!^([^@]*@[^:]*:|https://[^/]*/)([^/]*/[^/]*)[.]git$!\2!'
+  | sed -E 's!^([^@]*@([^:]*):|https://([^/]*)/)(.*)[.]git$!\2\3/\4!'
 }
 
 # If refs/heads/master exists, returns "master";
@@ -30,8 +30,8 @@ get_default_branch() {
   printf master
 }
 
-origin_slug="$(get_slug origin)"
-upstream_slug="$(get_slug upstream)"
+origin_identifier="$(get_identifier origin)"
+upstream_identifier="$(get_identifier upstream)"
 default_branch="$(get_default_branch)"
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 case "$1" in
@@ -39,10 +39,10 @@ case "$1" in
   --default-branch) default_branch="$2" ;;
   -*) echo "invalid argument $1" >&2 ; exit 1 ;;
 esac
-if [ -n "$upstream_slug" ] ; then
-  open "https://github.com/$origin_slug/compare/${upstream_slug/\/*/}:$default_branch...$current_branch"
+if [ -n "$upstream_identifier" ] ; then
+  open "https://$origin_identifier/compare/$(cut -d / -f 2 <<<"$upstream_identifier"):$default_branch...$current_branch"
 elif [ "$current_branch" = "$default_branch" ] ; then
-  open "https://github.com/$origin_slug/commits/$default_branch"
+  open "https://$origin_identifier/commits/$default_branch"
 else
-  open "https://github.com/$origin_slug/compare/$default_branch...$current_branch"
+  open "https://$origin_identifier/compare/$default_branch...$current_branch"
 fi
