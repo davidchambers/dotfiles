@@ -21,6 +21,7 @@ set expandtab
 set hlsearch
 set incsearch
 set laststatus=2
+set nojoinspaces
 set nonumber
 set noshowmode
 set nospell
