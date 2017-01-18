@@ -3,13 +3,9 @@ set -e
 
 usage() {
   echo "
-  usage: $(basename $0) [options]
+  usage: $(basename $0)
 
   Open the current Git repository in a browser.
-
-  options:
-
-    --default-branch <branch-name>
 "
 }
 
@@ -18,25 +14,20 @@ get_identifier() {
   | sed -E 's!^([^@]*@([^:]*):|https://([^/]*)/)(.*)[.]git$!\2\3/\4!'
 }
 
-# If refs/heads/master exists, returns "master";
-# else if refs/heads/gh-pages exists, returns "gh-pages";
-# else returns "master".
 get_default_branch() {
-  local ref
-  for ref in $(git for-each-ref --format='%(refname)' refs/heads | sort -r) ; do
-    [ "$ref" = 'refs/heads/master' ] && printf master && exit
-    [ "$ref" = 'refs/heads/gh-pages' ] && printf gh-pages && exit
-  done
-  printf master
+  node --eval "\
+    var o = $(curl --silent \
+                   --header 'Accept: application/vnd.github.v3+json' \
+                   "https://api.github.com/repos/$1"); \
+    process.stdout.write('default_branch' in o ? o.default_branch : 'master')"
 }
 
 origin_identifier="$(get_identifier origin)"
 upstream_identifier="$(get_identifier upstream)"
-default_branch="$(get_default_branch)"
+default_branch="$(get_default_branch "${origin_identifier#github.com/}")"
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 case "$1" in
   -h|--help) usage ; exit ;;
-  --default-branch) default_branch="$2" ;;
   -*) echo "invalid argument $1" >&2 ; exit 1 ;;
 esac
 if [ -n "$upstream_identifier" ] ; then
