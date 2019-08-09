@@ -1,6 +1,7 @@
 set_prompt() {
   local branch env when
-  branch=$(GIT_PS1_SHOWDIRTYSTATE=true __git_ps1)
+  branch="$(GIT_PS1_SHOWDIRTYSTATE=true __git_ps1)"
+  branch="${branch//$/\\$}"  # support dollar signs in branch names
   if [[ -n "$VIRTUAL_ENV" ]] ; then
     env=" \[\e[0;32m\]:$(basename $VIRTUAL_ENV)"
   else
