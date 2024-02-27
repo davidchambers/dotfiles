@@ -29,8 +29,6 @@ main() {
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
   export PATH="$HOME/bin:$PATH"
   export PROMPT_COMMAND=set_prompt
-  export VIRTUALENV_DISTRIBUTE=true
-  export WORKON_HOME="$HOME/.virtualenvs"
 
   include "/opt/local/etc/bash_completion"
   include "/opt/local/share/git/contrib/completion/git-completion.bash"
