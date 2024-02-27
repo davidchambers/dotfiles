@@ -20,17 +20,12 @@ include() {
 }
 
 main() {
-  local pyver=2.7
-  local pybin="/opt/local/Library/Frameworks/Python.framework/Versions/$pyver/bin"
-
   export CLICOLOR=1
   export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
   export LESS=-R
   export NODE_PATH="/opt/local/lib/node_modules:$NODE_PATH"
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
   export PATH="$HOME/Library/Haskell/bin:$PATH"
-  export PATH="$HOME/Library/Python/$pyver/bin:$PATH"
-  export PATH="$pybin:$PATH"
   export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
   export PATH="$HOME/bin:$PATH"
   export PROMPT_COMMAND=set_prompt
@@ -40,7 +35,6 @@ main() {
   include "/opt/local/etc/bash_completion"
   include "/opt/local/share/git/contrib/completion/git-completion.bash"
   include "/opt/local/share/git/contrib/completion/git-prompt.sh"
-  include "$pybin/virtualenvwrapper.sh"
 }
 main
 
