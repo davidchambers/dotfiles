@@ -4,7 +4,6 @@ set -e
 while read filename ; do
   ln -s "$HOME/.dotfiles/$filename" "$HOME/$filename" || true
 done <<END
-.LaunchAgents
 .bash_profile
 .bashrc
 .gitconfig
@@ -13,7 +12,6 @@ done <<END
 .iterm
 .ssh/config
 .vimrc
-bin
 git
 hg
 END

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-set -e
-
-# The real npm should be second in the list.
-npm="$(which -a npm | head -n 2 | tail -n 1)"
-
-# Strip the visually offensive background colours from npm's output,
-# leaving the foreground colours intact.
-npm_config_color=always "$npm" "$@" 2> >(sed -E $'s:\x1B\[(7|4[0-9])m::g' >&2)
