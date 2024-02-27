@@ -35,8 +35,6 @@ main() {
 }
 main
 
-alias noderepl='env NODE_NO_READLINE=1 rlwrap --prompt-colour=yellow --substitute-prompt="node >>> " node'
-
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 shopt -s histappend
