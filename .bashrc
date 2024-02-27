@@ -65,20 +65,3 @@ date() {
       command date "$@" ;;
   esac
 }
-
-hgcsetdate() {
-  if [[ $1 == --help ]]; then
-    echo '
-    hgcsetdate [rev] [format]
-
-Output the timestamp of the specified revision in the specified format.
-
-`format` is optional and defaults to "%d %B %Y". If both arguments are
-omitted, `rev` defaults to "tip".'
-  else
-    rev=${1:-tip}
-    format=${2:-'%d %B %Y'}
-    isodate=`hg log --template '{date|isodate}' --rev $rev`
-    date -j -f '%F %H:%M %z' "$isodate" +"$format" | sed s/^0//
-  fi
-}
