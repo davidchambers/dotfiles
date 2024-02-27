@@ -5,9 +5,6 @@
 	name = David Chambers
 	email = dc@davidchambers.me
 
-[alias]
-	l = "!. ~/git/helpers && pretty_git_log"
-
 [core]
 	excludesfile = ~/git/gitignore
 
