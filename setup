@@ -7,9 +7,9 @@ done <<END
 .bash_profile
 .bashrc
 .gitconfig
+.gitignore
 .inputrc
 .iterm
 .ssh/config
 .vimrc
-git
 END

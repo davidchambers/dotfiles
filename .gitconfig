@@ -6,7 +6,7 @@
 	email = dc@davidchambers.me
 
 [core]
-	excludesfile = ~/git/gitignore
+	excludesfile = ~/.gitignore
 
 [diff]
 	tool = vimdiff
