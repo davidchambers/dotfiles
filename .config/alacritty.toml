@@ -4,33 +4,46 @@ TERM = "alacritty-direct"
 [window]
 padding = { x = 15, y = 8 }
 startup_mode = "SimpleFullscreen"
+option_as_alt = "Both"
+
+[keyboard]
+bindings = [
+  # https://stackoverflow.com/a/29403520/312785
+  { key = "ArrowLeft",  mods = "Option",  chars = "\u001B\u0062" },  # jump to previous word
+  { key = "ArrowRight", mods = "Option",  chars = "\u001B\u0066" },  # jump to next word
+  { key = "Backspace",  mods = "Option",  chars = "\u001B\u0008" },  # delete word
+  { key = "ArrowLeft",  mods = "Command", chars = "\u0001"       },  # jump to start of line
+  { key = "ArrowRight", mods = "Command", chars = "\u0005"       },  # jump to end of line
+  { key = "Backspace",  mods = "Command", chars = "\u0015"       },  # delete to start of line
+  { key = "Z",          mods = "Command", chars = "\u001F"       },  # undo
+]
 
 [font]
-normal = { family = "SFMono Nerd Font", style = "Regular" }
+normal = { family = "SF Mono", style = "Regular" }
 bold = { style = "Semibold" }
 size = 16
 offset = { x = 0, y = 8 }
 
 [colors.primary]
 foreground = "#ffffff"
-background = "#083344"
+background = "#113344"
 
 [colors.normal]
-black   = "#083344"
-red     = "#ef4444"
-green   = "#65a30d"
-yellow  = "#fbbf24"
-blue    = "#0284c7"
-magenta = "#ec4899"
-cyan    = "#06b6d4"
+black   = "#113344"
+red     = "#dd2222"
+green   = "#66aa11"
+yellow  = "#ee9900"
+blue    = "#117788"
+magenta = "#ff7788"
+cyan    = "#11bbcc"
 white   = "#ffffff"
 
 [colors.bright]
-black   = "#164e63"
-red     = "#f87171"
-green   = "#a3e635"
-yellow  = "#fde68a"
-blue    = "#38bdf8"
-magenta = "#f9a8d4"
-cyan    = "#67e8f9"
+black   = "#113344"
+red     = "#dd2222"
+green   = "#66aa11"
+yellow  = "#ee9900"
+blue    = "#117788"
+magenta = "#ff7788"
+cyan    = "#11bbcc"
 white   = "#ffffff"

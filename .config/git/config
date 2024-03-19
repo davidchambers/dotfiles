@@ -6,6 +6,9 @@
 	email = dc@davidchambers.me
 	signingKey = 9A9048E2885F5668
 
+[core]
+	pager = diffr | less -R
+
 [diff]
 	tool = vimdiff
 
@@ -14,3 +17,6 @@
 
 [commit]
 	gpgSign = true
+
+[init]
+	defaultBranch = main

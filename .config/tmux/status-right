@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Determine tmux status-right from path, branch name, "dirty" state, and time:
+#
+#     ~/github.com/davidchambers/dotfiles (main *)                  22:22
+
+width="$1"
+pane_current_path="$2"
+
+source "$(brew --prefix)/etc/bash_completion.d/git-prompt.sh"
+
+ellipsis='...'
+separator=' '
+right="$(date +%H:%M)"
+max=$((width - ${#separator} - ${#right}))
+left="$pane_current_path"
+[[ $left == "$HOME" || $left == "$HOME"/* ]] && left="~${left:${#HOME}}"
+left="$left$(cd -- "$pane_current_path" && GIT_PS1_SHOWDIRTYSTATE=x __git_ps1 ' (%s)')"
+((${#left} > max)) && left="${ellipsis}${left:((${#ellipsis} + ${#left} - max))}"
+printf '%-*s%s%s' $max "$left" "$separator" "$right"

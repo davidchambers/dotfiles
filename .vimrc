@@ -1,8 +1,6 @@
-execute pathogen#infect()
-
 syntax on
 colorscheme aotearoa
-set guifont=Inconsolata\ for\ Powerline:h18
+set guifont=Fira\ Code:h16
 
 set guioptions-=L " hide left scrollbar
 set guioptions-=r " hide right scrollbar
@@ -18,14 +16,17 @@ set autoread
 set conceallevel=2
 set dir=/tmp
 set expandtab
+set hidden
 set hlsearch
 set incsearch
 set laststatus=2
 set nojoinspaces
-set nonumber
 set noshowmode
 set nospell
 set nowrap
+set shortmess-=S
+set signcolumn=number
+set updatetime=300
 
 " Mode-dependent cursor for iTerm.
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -62,6 +63,13 @@ noremap gk k
 " System clipboard interaction.
 noremap <leader>p :silent! set paste<CR>"*p:set nopaste<CR>
 noremap <leader>P :silent! set paste<CR>"*P:set nopaste<CR>
+
+highlight SerifIdentifier           cterm=NONE    ctermbg=234  ctermfg=179 gui=NONE    guibg=#282828 guifg=#ddcc99
+highlight SerifEscapeSequence       cterm=reverse ctermbg=NONE ctermfg=064 gui=reverse guibg=NONE    guifg=#88aa44
+highlight SerifTemplateExpression   cterm=reverse ctermbg=NONE ctermfg=064 gui=reverse guibg=NONE    guifg=#88aa44
+highlight SerifDelimiter            cterm=NONE    ctermbg=234  ctermfg=102 gui=NONE    guibg=#282828 guifg=#999988
+
+highlight link Operator Keyword
 
 if has("autocmd")
   filetype plugin indent on
