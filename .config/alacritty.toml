@@ -1,0 +1,36 @@
+[env]
+TERM = "alacritty-direct"
+
+[window]
+padding = { x = 15, y = 8 }
+startup_mode = "SimpleFullscreen"
+
+[font]
+normal = { family = "SFMono Nerd Font", style = "Regular" }
+bold = { style = "Semibold" }
+size = 16
+offset = { x = 0, y = 8 }
+
+[colors.primary]
+foreground = "#ffffff"
+background = "#083344"
+
+[colors.normal]
+black   = "#083344"
+red     = "#ef4444"
+green   = "#65a30d"
+yellow  = "#fbbf24"
+blue    = "#0284c7"
+magenta = "#ec4899"
+cyan    = "#06b6d4"
+white   = "#ffffff"
+
+[colors.bright]
+black   = "#164e63"
+red     = "#f87171"
+green   = "#a3e635"
+yellow  = "#fde68a"
+blue    = "#38bdf8"
+magenta = "#f9a8d4"
+cyan    = "#67e8f9"
+white   = "#ffffff"
